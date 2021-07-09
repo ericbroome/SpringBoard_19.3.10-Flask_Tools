@@ -23,7 +23,6 @@ nextQuestion = -1
 def do_home():
     """Display the home page"""
     global survey, nextQuestion
-    flash("This is a flash")
     s = request.args.get('s', '')
     if(s == '0' or s == '1'):
         # We have selected the satisfaction survey
@@ -43,7 +42,7 @@ def do_questions(index):
         #DO SOMETHING ABOUT INDEX OUT OF RANGE
         flash("Question index is out of range. You must answer each question sequentially", category="warning")
     if(index != nextQuestion):
-        flash("Do not attempt to manually overridethe correct sequencefor questions...", category="warning")
+        flash("Do not attempt to manually overridethe correct sequence for questions...", category="warning")
         return redirect(f"{nextQuestion}", 307)
     return render_template("questions.html", question=survey.questions[index])
 

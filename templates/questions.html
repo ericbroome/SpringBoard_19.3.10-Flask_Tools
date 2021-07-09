@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 {% block title %}Questions Form{% endblock %}
 {% block content %}        
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash">
+                {% for message in messages %}
+                    <div>{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
     <div class="border-container"><h1>{{question.question}}</h1><div>
         <form name="answerForm" action="/answer" method="POST">
             {% with choices = question.choices %}
